@@ -8,7 +8,7 @@ $senha = $_POST['senha'];
 $query = $pdo->prepare("SELECT * from usuarios where email = :email and senha = :senha ");
 $query->bindValue(":email", "$email");
 $query->bindValue(":senha", "$senha");
-$query->execute();//executar
+$query->execute();
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 $total_reg = @count($res);
 

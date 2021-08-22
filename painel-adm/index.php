@@ -3,6 +3,7 @@
 require_once("../conexao.php");
 require_once("verificar.php");
 $id_usuario = $_SESSION['id_usuario'];
+
 //RECUPERAR DADOS DO USUÁRIO
 $query = $pdo->query("SELECT * from usuarios where id = '$id_usuario' ");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -14,11 +15,14 @@ $nivel_usuario = $res[0]['nivel'];
 
 
 //MENUS DO PAINEL
-$menu1 = 'home';
-$menu2 = 'clientes';
-$menu3 = 'niveis';
-$menu4 = 'usuarios';
-$menu5 = 'bancos';
+$menu1 = 'paineis';
+$menu2 = 'cadastrar_empresas';
+$menu3 = 'cadastrar_clientes';
+$menu4 = 'cadastrar_fornecedores';
+$menu5 = 'niveis';
+
+
+
 
 if(@$_GET['pag'] == ""){
 	$pag = $menu1;
@@ -67,11 +71,13 @@ if(@$_GET['pag'] == ""){
 							Departamento Administrativo
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu2 ?>">Cadastrar Empresas</a></li>
-							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu4 ?>">Cadastrar Usuários</a></li>
-							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu5 ?>">Cadastrar Clientes</a></li>
-							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu5 ?>">Cadastrar Fornecedores</a></li>
-							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu3 ?>">Cadastrar Níveis de Usuários</a></li>
+							<li><a class="dropdown-item" href="cadastrar_empresas.php?pag=<?php echo $menu2 ?>">Cadastrar Empresas</a></li>
+
+							<li><a class="dropdown-item" href="cadastrar_clientes.php?pag=<?php echo $menu3?>">Cadastrar Clientes</a></li>
+
+							<li><a class="dropdown-item" href="cadastrar_fornecedores.php?pag=<?php echo $menu4 ?>">Cadastrar Fornecedores</a></li>
+
+							<li><a class="dropdown-item" href="niveis.php?pag=<?php echo $menu5 ?>">Cadastrar Níveis de Usuários</a></li>
 
 						</ul>
 					</li>
@@ -197,46 +203,49 @@ if(@$_GET['pag'] == ""){
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Editar Dados</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	<!-- Modal -->
+	<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Editar Dados</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<form id="form-perfil" method="post">
+					<div class="modal-body">
+
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Nome</label>
+							<input type="text" class="form-control" name="nome-usuario" placeholder="Nome" value="<?php echo $nome_usuario ?>">
+						</div>
+
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Email</label>
+							<input type="email" class="form-control" name="email-usuario" placeholder="Email" value="<?php echo $email_usuario ?>">
+						</div>
+
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Senha</label>
+							<input type="text" class="form-control" name="senha-usuario" placeholder="Senha" value="<?php echo $senha_usuario ?>">
+						</div>
+
+						<small><div id="mensagem-perfil" align="center"></div></small>
+
+
+
+						<input type="hidden" class="form-control" name="id-usuario"  value="<?php echo $id_usuario ?>">
+
+
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-fechar-perfil">Fechar</button>
+						<button type="submit" class="btn btn-primary">Salvar</button>
+					</div>
+				</form>
 			</div>
-			<form id="form-perfil" method="post">
-				<div class="modal-body">
-
-					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">Nome</label>
-						<input type="text" class="form-control" name="nome-usuario" placeholder="Nome" value="<?php echo $nome_usuario ?>">
-					</div>
-
-					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">Email</label>
-						<input type="email" class="form-control" name="email-usuario" placeholder="Email" value="<?php echo $email_usuario ?>">
-					</div>
-
-					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">Senha</label>
-						<input type="text" class="form-control" name="senha-usuario" placeholder="Senha" value="<?php echo $senha_usuario ?>">
-					</div>
-
-					<small><div id="mensagem-perfil" align="center"></div></small>
-
-					<input type="hidden" class="form-control" name="id-usuario"  value="<?php echo $id_usuario ?>">
-
-
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-fechar-perfil">Fechar</button>
-					<button type="submit" class="btn btn-primary">Salvar</button>
-				</div>
-			</form>
 		</div>
 	</div>
-</div>
 
 
 

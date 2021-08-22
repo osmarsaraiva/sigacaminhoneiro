@@ -7,17 +7,17 @@ $res = $query->fetchAll(PDO::FETCH_ASSOC);//comando padrão para executar consul
 $total_reg = @count($res);//contagem de registro//@ignorar informação do servidor
 
 //CRIAR O NÍVEL ADMINISTRADOR CASO ELE NÃO EXISTA
-//$query2 = $pdo->query("SELECT * from niveis where nivel = 'Administrador' ");
-//$res2 = $query2->fetchAll(PDO::FETCH_ASSOC);
-//$total_reg2 = @count($res2);
+$query2 = $pdo->query("SELECT * from niveis where nivel = 'Administrador' ");
+$res2 = $query2->fetchAll(PDO::FETCH_ASSOC);
+$total_reg2 = @count($res2);
 
 if($total_reg == 0){
   $pdo->query("INSERT INTO usuarios SET nome = '$nome_admin', email = '$email_adm', senha = '123', nivel = 'Administrador' ");  
 }
 
-//if($total_reg2 == 0){
-  //$pdo->query("INSERT INTO niveis SET nivel = 'Administrador'");  
-//}
+if($total_reg2 == 0){
+  $pdo->query("INSERT INTO niveis SET nivel = 'Administrador'");  
+}
 
 
  ?>
