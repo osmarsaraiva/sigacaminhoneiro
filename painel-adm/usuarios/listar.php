@@ -39,7 +39,7 @@ for($i=0; $i < @count($res); $i++){
 	<a href="#" onclick="excluir('{$id}' , '{$cp1}')" title="Excluir Registro">	<i class="bi bi-trash text-danger"></i> </a>
 	</td>
 	</tr>
-	HTML;
+HTML;
 } 
 echo <<<HTML
 </tbody>
@@ -63,6 +63,8 @@ function editar(id, nome, email, senha, nivel){
 	$('#<?=$campo2?>').val(email);
 	$('#<?=$campo3?>').val(senha);
 	$('#<?=$campo4?>').val(nivel);
+
+
 	
 	$('#tituloModal').text('Editar Registro');
 	var myModal = new bootstrap.Modal(document.getElementById('modalForm'), {		});
@@ -73,11 +75,10 @@ function editar(id, nome, email, senha, nivel){
 
 
 function limparCampos(){
-	$('#id').val('');
+	$('#codigo').val('');
 	$('#<?=$campo1?>').val('');
 	$('#<?=$campo2?>').val('');
 	$('#<?=$campo3?>').val('');
-
 	$('#mensagem').text('');
 	
 }

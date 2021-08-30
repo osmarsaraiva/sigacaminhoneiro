@@ -12,7 +12,6 @@ echo <<<HTML
 <tbody>
 HTML;
 
-
 $query = $pdo->query("SELECT * from niveis order by id desc ");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 for($i=0; $i < @count($res); $i++){
@@ -26,14 +25,15 @@ for($i=0; $i < @count($res); $i++){
 	<a href="#" onclick="excluir('{$res[$i]['id']}' , '{$res[$i]['nivel']}')" title="Excluir Registro">	<i class="bi bi-trash text-danger"></i> </a>
 	</td>
 	</tr>
-	HTML;
-} 
+HTML;
+}
 echo <<<HTML
 </tbody>
 </table>
 HTML;
 
 ?>
+
 
 <script>
 $(document).ready(function() {    
@@ -53,12 +53,9 @@ function editar(id, nivel){
 
 }
 
-
-
 function limparCampos(){
 	$('#id').val('');
 	$('#nivel').val('');
 	
 }
-
 </script>

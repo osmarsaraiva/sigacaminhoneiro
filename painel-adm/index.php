@@ -20,7 +20,8 @@ $menu2 = 'cadastrar_empresas';
 $menu3 = 'cadastrar_clientes';
 $menu4 = 'cadastrar_fornecedores';
 $menu5 = 'niveis';
-
+$menu6 = 'usuarios';
+$menu7 = 'caminhoes';
 
 
 
@@ -77,7 +78,9 @@ if(@$_GET['pag'] == ""){
 
 							<li><a class="dropdown-item" href="cadastrar_fornecedores.php?pag=<?php echo $menu4 ?>">Cadastrar Fornecedores</a></li>
 
-							<li><a class="dropdown-item" href="niveis.php?pag=<?php echo $menu5 ?>">Cadastrar Níveis de Usuários</a></li>
+							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu5 ?>">Cadastrar Níveis de Usuários</a></li>
+
+							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu6 ?>">Cadastrar Usuários</a></li>
 
 						</ul>
 					</li>
@@ -96,7 +99,7 @@ if(@$_GET['pag'] == ""){
 							Departamento Operacional
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu2 ?>">Cadastrar Caminhões</a></li>
+							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu7 ?>">Cadastrar caminhões</a></li>
 							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu4 ?>">Cadastrar Carretas</a></li>
 							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu5 ?>">Cadastrar Frotas</a></li>
 							<li><a class="dropdown-item" href="index.php?pag=<?php echo $menu5 ?>">Cadastrar Veículos</a></li>
